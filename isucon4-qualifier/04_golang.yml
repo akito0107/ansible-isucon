@@ -5,16 +5,16 @@
     - yum: pkg=git state=installed
     - yum: pkg=mercurial state=installed
     - yum: pkg=bzr state=installed
-    - command: "curl -L -O https://storage.googleapis.com/golang/go1.5.4.linux-amd64.tar.gz"
+    - command: "curl -L -O  http://golang.org/dl/go1.7.6.linux-amd64.tar.gz"
       args:
         chdir: /tmp
         creates: /usr/local/go
-    - command: "tar -C /usr/local -xzf go1.5.4.linux-amd64.tar.gz"
+    - command: "tar -C /usr/local -xzf go1.7.6.linux-amd64.tar.gz"
       args:
         chdir: /tmp
         creates: /usr/local/go
     - shell: cp /tmp/isucon4/qualifier/ami/files/golang.sh /etc/profile.d/golang.sh
-    - command: "/usr/bin/gem install --no-rdoc --no-ri gondler -v 0.2.0"
+    - command: "/usr/bin/gem install --no-rdoc --no-ri gondler -v 0.4.1"
       args:
         creates: /usr/local/bin/gondler
     - command: /home/isucon/env.sh ./build.sh
